@@ -33,63 +33,77 @@
   }
 
   h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid black;
-    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.02em;
   }
 
   .sessions-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0.625rem;
   }
 
   .session-item {
-    border: 2px solid black;
-    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
     text-decoration: none;
-    color: black;
+    color: #000;
     display: block;
-    transition: background 0.2s;
+    transition: all 0.15s ease;
   }
 
   .session-item:hover {
-    background: black;
-    color: white;
+    border-color: #000;
+    background: #000;
+    color: #fff;
+  }
+
+  .session-item:active {
+    transform: scale(0.99);
   }
 
   .session-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.375rem;
   }
 
   .session-number {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
   .session-date {
-    font-size: 0.875rem;
-    opacity: 0.7;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    font-weight: 500;
+  }
+
+  .session-item:hover .session-date {
+    opacity: 0.8;
   }
 
   .artists {
-    font-size: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
   }
 
   @media (max-width: 640px) {
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.375rem;
     }
 
     .session-number {
-      font-size: 1.25rem;
+      font-size: 1.0625rem;
     }
   }
 </style>

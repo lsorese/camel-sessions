@@ -4,6 +4,16 @@
   export let data;
   const { sessions } = data;
 
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  function formatDate(dateString) {
+    return dateFormatter.format(new Date(dateString));
+  }
+
   function playTrack(artist, sessionNum) {
     audioStore.play(artist, sessionNum);
   }
@@ -25,7 +35,7 @@
         <h3>
           <a href="/session/{session.session}">Session {session.session}</a>
         </h3>
-        <div class="session-date">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+        <div class="session-date">{formatDate(session.date)}</div>
       </div>
 
       {#if session.weather}

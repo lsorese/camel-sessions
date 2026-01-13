@@ -1,37 +1,38 @@
 import { writable } from 'svelte/store';
 
-function createAudioStore() {
-  const { subscribe, set, update } = writable({
-    currentTrack: null, // { artist, filename, sessionNum }
-    isPlaying: false,
-    currentTime: 0,
-    duration: 0,
-    audio: null
-  });
+const INITIAL_STATE = {
+  currentTrack: null,
+  isPlaying: false,
+  currentTime: 0,
+  duration: 0,
+  audio: null
+};
 
-  return {
-    subscribe,
-    play: (artist, sessionNum) => update(state => {
-      // Stop current audio if playing
+function createAudioStore() {
+  const { subscribe, update } = writable(INITIAL_STATE);
+
+  function setupAudioEvents(audio, update) {
+    audio.addEventListener('loadedmetadata', function() {
+      update(s => ({ ...s, duration: audio.duration }));
+    });
+
+    audio.addEventListener('timeupdate', function() {
+      update(s => ({ ...s, currentTime: audio.currentTime }));
+    });
+
+    audio.addEventListener('ended', function() {
+      update(s => ({ ...s, isPlaying: false }));
+    });
+  }
+
+  function play(artist, sessionNum) {
+    update(function(state) {
       if (state.audio) {
         state.audio.pause();
       }
 
-      // Create new audio element
       const audio = new Audio(`/sessions/session-${sessionNum}/${artist.filename}`);
-
-      audio.addEventListener('loadedmetadata', () => {
-        update(s => ({ ...s, duration: audio.duration }));
-      });
-
-      audio.addEventListener('timeupdate', () => {
-        update(s => ({ ...s, currentTime: audio.currentTime }));
-      });
-
-      audio.addEventListener('ended', () => {
-        update(s => ({ ...s, isPlaying: false }));
-      });
-
+      setupAudioEvents(audio, update);
       audio.play();
 
       return {
@@ -41,9 +42,14 @@ function createAudioStore() {
         duration: 0,
         audio
       };
-    }),
-    togglePlayPause: () => update(state => {
-      if (!state.audio) return state;
+    });
+  }
+
+  function togglePlayPause() {
+    update(function(state) {
+      if (!state.audio) {
+        return state;
+      }
 
       if (state.isPlaying) {
         state.audio.pause();
@@ -52,13 +58,23 @@ function createAudioStore() {
       }
 
       return { ...state, isPlaying: !state.isPlaying };
-    }),
-    seek: (time) => update(state => {
+    });
+  }
+
+  function seek(time) {
+    update(function(state) {
       if (state.audio) {
         state.audio.currentTime = time;
       }
       return state;
-    })
+    });
+  }
+
+  return {
+    subscribe,
+    play,
+    togglePlayPause,
+    seek
   };
 }
 

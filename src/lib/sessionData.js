@@ -1,74 +1,85 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+function stripQuotes(value) {
+  return value.replace(/^["']|["']$/g, '');
+}
+
+function extractValue(line, key) {
+  return line.split(key)[1].trim();
+}
+
+function parseSessionField(data, trimmed) {
+  if (trimmed.startsWith('session:')) {
+    data.session = parseInt(extractValue(trimmed, 'session:'));
+  } else if (trimmed.startsWith('date:')) {
+    data.date = extractValue(trimmed, 'date:');
+  } else if (trimmed.startsWith('weather:')) {
+    data.weather = stripQuotes(extractValue(trimmed, 'weather:'));
+  } else if (trimmed.startsWith('weatherMood:')) {
+    data.weatherMood = stripQuotes(extractValue(trimmed, 'weatherMood:'));
+  } else if (trimmed.startsWith('temperature:')) {
+    data.temperature = stripQuotes(extractValue(trimmed, 'temperature:'));
+  } else if (trimmed.startsWith('description:')) {
+    data.description = extractValue(trimmed, 'description:');
+  }
+}
+
+function parseArtistField(artist, trimmed, context) {
+  if (trimmed.startsWith('filename:')) {
+    artist.filename = extractValue(trimmed, 'filename:');
+  } else if (trimmed.startsWith('genre:')) {
+    artist.genre = extractValue(trimmed, 'genre:');
+  } else if (trimmed.startsWith('description:')) {
+    artist.description = extractValue(trimmed, 'description:');
+  } else if (trimmed === 'tracks:') {
+    context.section = 'tracks';
+  } else if (trimmed === 'links:') {
+    context.section = 'links';
+  } else if (context.section === 'tracks' && trimmed.startsWith('-')) {
+    artist.tracks.push(trimmed.substring(1).trim());
+  } else if (context.section === 'links') {
+    parseArtistLink(artist, trimmed, context);
+  }
+}
+
+function parseArtistLink(artist, trimmed, context) {
+  if (trimmed.startsWith('- label:')) {
+    if (context.link) {
+      artist.links.push(context.link);
+    }
+    context.link = { label: extractValue(trimmed, '- label:') };
+  } else if (trimmed.startsWith('url:') && context.link) {
+    context.link.url = extractValue(trimmed, 'url:');
+    artist.links.push(context.link);
+    context.link = null;
+  }
+}
 
 function parseMarkdownFrontmatter(content) {
-  const frontmatterRegex = /^---\n([\s\S]+?)\n---/;
-  const match = content.match(frontmatterRegex);
+  const frontmatterMatch = content.match(/^---\n([\s\S]+?)\n---/);
+  if (!frontmatterMatch) {
+    return null;
+  }
 
-  if (!match) return null;
-
-  const frontmatterText = match[1];
+  const lines = frontmatterMatch[1].split('\n');
   const data = { artists: [] };
-
-  const lines = frontmatterText.split('\n');
   let currentArtist = null;
-  let currentIndent = 0;
-  let inTracks = false;
-  let inLinks = false;
-  let currentLink = null;
+  const context = { section: null, link: null };
 
   for (const line of lines) {
     const trimmed = line.trim();
-    const indent = line.search(/\S/);
 
-    if (trimmed.startsWith('session:')) {
-      data.session = parseInt(trimmed.split(':')[1].trim());
-    } else if (trimmed.startsWith('date:')) {
-      data.date = trimmed.split(':')[1].trim();
-    } else if (trimmed.startsWith('weather:')) {
-      data.weather = trimmed.split('weather:')[1].trim().replace(/^["']|["']$/g, '');
-    } else if (trimmed.startsWith('weatherMood:')) {
-      data.weatherMood = trimmed.split('weatherMood:')[1].trim().replace(/^["']|["']$/g, '');
-    } else if (trimmed.startsWith('temperature:')) {
-      data.temperature = trimmed.split('temperature:')[1].trim().replace(/^["']|["']$/g, '');
-    } else if (trimmed.startsWith('description:') && !currentArtist) {
-      data.description = trimmed.split('description:')[1].trim();
-    } else if (trimmed.startsWith('- name:')) {
+    if (trimmed.startsWith('- name:')) {
       if (currentArtist) {
         data.artists.push(currentArtist);
       }
-      currentArtist = { name: trimmed.split('- name:')[1].trim(), tracks: [], links: [] };
-      inTracks = false;
-      inLinks = false;
+      currentArtist = { name: extractValue(trimmed, '- name:'), tracks: [], links: [] };
+      context.section = null;
     } else if (currentArtist) {
-      if (trimmed.startsWith('filename:')) {
-        currentArtist.filename = trimmed.split(':')[1].trim();
-      } else if (trimmed.startsWith('genre:')) {
-        currentArtist.genre = trimmed.split(':')[1].trim();
-      } else if (trimmed.startsWith('description:')) {
-        currentArtist.description = trimmed.split('description:')[1].trim();
-      } else if (trimmed === 'tracks:') {
-        inTracks = true;
-        inLinks = false;
-      } else if (trimmed === 'links:') {
-        inLinks = true;
-        inTracks = false;
-      } else if (inTracks && trimmed.startsWith('-')) {
-        currentArtist.tracks.push(trimmed.substring(1).trim());
-      } else if (inLinks && trimmed.startsWith('- label:')) {
-        if (currentLink) {
-          currentArtist.links.push(currentLink);
-        }
-        currentLink = { label: trimmed.split('- label:')[1].trim() };
-      } else if (inLinks && trimmed.startsWith('url:') && currentLink) {
-        currentLink.url = trimmed.split('url:')[1].trim();
-        currentArtist.links.push(currentLink);
-        currentLink = null;
-      }
+      parseArtistField(currentArtist, trimmed, context);
+    } else {
+      parseSessionField(data, trimmed);
     }
   }
 
@@ -83,19 +94,19 @@ export function getAllSessions() {
   const contentDir = path.join(process.cwd(), 'src/content/sessions');
   const sessionDirs = fs.readdirSync(contentDir).filter(f => f.startsWith('session-'));
 
-  const sessions = sessionDirs.map(dir => {
-    const sessionFile = path.join(contentDir, dir, 'session.md');
-    if (!fs.existsSync(sessionFile)) return null;
-
-    const content = fs.readFileSync(sessionFile, 'utf-8');
-    const data = parseMarkdownFrontmatter(content);
-    return data;
-  }).filter(Boolean).sort((a, b) => b.session - a.session); // Newest first
-
-  return sessions;
+  return sessionDirs
+    .map(dir => {
+      const sessionFile = path.join(contentDir, dir, 'session.md');
+      if (!fs.existsSync(sessionFile)) {
+        return null;
+      }
+      const content = fs.readFileSync(sessionFile, 'utf-8');
+      return parseMarkdownFrontmatter(content);
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.session - a.session);
 }
 
 export function getSessionByNumber(num) {
-  const sessions = getAllSessions();
-  return sessions.find(s => s.session === parseInt(num));
+  return getAllSessions().find(s => s.session === parseInt(num));
 }

@@ -1,6 +1,20 @@
 <script>
   export let data;
   const { sessions } = data;
+
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  function formatDate(dateString) {
+    return dateFormatter.format(new Date(dateString));
+  }
+
+  function formatArtistNames(artists) {
+    return artists.map(a => a.name).join(', ');
+  }
 </script>
 
 <svelte:head>
@@ -15,16 +29,12 @@
       <a href="/session/{session.session}" class="session-item">
         <div class="session-header">
           <div class="session-number">Session {session.session}</div>
-          <div class="session-date">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+          <div class="session-date">{formatDate(session.date)}</div>
         </div>
         {#if session.weather}
           <div class="weather-compact">{session.weather}</div>
         {/if}
-        <div class="artists">
-          {#each session.artists as artist, i}
-            {artist.name}{i < session.artists.length - 1 ? ', ' : ''}
-          {/each}
-        </div>
+        <div class="artists">{formatArtistNames(session.artists)}</div>
       </a>
     {/each}
   </div>

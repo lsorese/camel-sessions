@@ -2,9 +2,12 @@
   import { audioStore } from './audioStore.js';
 
   $: ({ currentTrack, isPlaying, currentTime, duration } = $audioStore);
+  $: progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   function formatTime(seconds) {
-    if (!seconds || isNaN(seconds)) return '0:00';
+    if (!seconds || isNaN(seconds)) {
+      return '0:00';
+    }
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
@@ -12,10 +15,8 @@
 
   function handleSeek(e) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = x / rect.width;
-    const newTime = percentage * duration;
-    audioStore.seek(newTime);
+    const percentage = (e.clientX - rect.left) / rect.width;
+    audioStore.seek(percentage * duration);
   }
 
   function handleToggle() {
@@ -48,7 +49,7 @@
         <div class="progress-section">
           <div class="time">{formatTime(currentTime)}</div>
           <button class="progress-bar" on:click={handleSeek}>
-            <div class="progress-fill" style="width: {(currentTime / duration) * 100}%"></div>
+            <div class="progress-fill" style="width: {progressPercent}%"></div>
           </button>
           <div class="time">{formatTime(duration)}</div>
         </div>

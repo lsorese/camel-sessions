@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fetch-weather": "node scripts/fetch-weather.js",
+    "prebuild": "npm run fetch-weather"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.1",

@@ -27,9 +27,9 @@
   }
 
   :global(body) {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: #fafafa;
-    color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Arial', sans-serif;
+    background: #f5f1e8;
+    color: #1a1a1a;
     padding-bottom: 140px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -40,8 +40,8 @@
   }
 
   header {
-    background: #fff;
-    border-bottom: 1px solid #000;
+    background: #fdfcf9;
+    border-bottom: 2px solid #d77b63;
     padding: 0.75rem 0;
     position: sticky;
     top: 0;
@@ -58,34 +58,37 @@
   }
 
   h1 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
+    color: #d77b63;
   }
 
   h1 a {
-    color: #000;
+    color: #d77b63;
     text-decoration: none;
   }
 
   h1 a:hover {
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
   nav a {
-    color: #000;
+    color: #5C4A33;
     text-decoration: none;
     font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid #000;
+    font-weight: 600;
+    border: 2px solid #5C4A33;
     padding: 0.375rem 0.75rem;
     display: inline-block;
     transition: all 0.15s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   nav a:hover {
-    background: #000;
-    color: #fff;
+    background: #5C4A33;
+    color: #f5f1e8;
   }
 
   nav a:active {
@@ -108,7 +111,7 @@
     }
 
     h1 {
-      font-size: 1rem;
+      font-size: 1.125rem;
     }
 
     nav a {

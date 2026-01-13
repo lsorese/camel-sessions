@@ -29,6 +29,12 @@ function parseMarkdownFrontmatter(content) {
       data.session = parseInt(trimmed.split(':')[1].trim());
     } else if (trimmed.startsWith('date:')) {
       data.date = trimmed.split(':')[1].trim();
+    } else if (trimmed.startsWith('weather:')) {
+      data.weather = trimmed.split('weather:')[1].trim().replace(/^["']|["']$/g, '');
+    } else if (trimmed.startsWith('weatherMood:')) {
+      data.weatherMood = trimmed.split('weatherMood:')[1].trim().replace(/^["']|["']$/g, '');
+    } else if (trimmed.startsWith('temperature:')) {
+      data.temperature = trimmed.split('temperature:')[1].trim().replace(/^["']|["']$/g, '');
     } else if (trimmed.startsWith('description:') && !currentArtist) {
       data.description = trimmed.split('description:')[1].trim();
     } else if (trimmed.startsWith('- name:')) {

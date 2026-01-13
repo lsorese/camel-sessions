@@ -33,7 +33,16 @@
 
       <div class="controls">
         <button class="play-button" on:click={handleToggle}>
-          {isPlaying ? '⏸' : '▶'}
+          {#if isPlaying}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="2" width="3" height="12" fill="currentColor"/>
+              <rect x="10" y="2" width="3" height="12" fill="currentColor"/>
+            </svg>
+          {:else}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 2L13 8L4 14V2Z" fill="currentColor"/>
+            </svg>
+          {/if}
         </button>
 
         <div class="progress-section">
@@ -54,11 +63,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #fff;
-    border-top: 1px solid #000;
+    background: #fdfcf9;
+    border-top: 2px solid #d77b63;
     padding: 0.75rem 1rem;
     z-index: 1000;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -4px 12px rgba(215, 123, 99, 0.15);
   }
 
   .player-content {
@@ -75,21 +84,25 @@
     font-size: 0.9375rem;
     font-weight: 700;
     margin-bottom: 0.125rem;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
 
   .session-link {
     font-family: inherit;
-    font-size: 0.75rem;
-    color: #000;
+    font-size: 0.6875rem;
+    color: #4a7c9e;
     text-decoration: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #4a7c9e;
     padding-bottom: 1px;
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .session-link:hover {
-    opacity: 0.6;
+    color: #d77b63;
+    border-bottom-color: #d77b63;
   }
 
   .controls {
@@ -99,8 +112,9 @@
   }
 
   .play-button {
-    background: #fff;
-    border: 1px solid #000;
+    background: #5C4A33;
+    border: 2px solid #5C4A33;
+    color: #f5f1e8;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -113,8 +127,8 @@
   }
 
   .play-button:hover {
-    background: #000;
-    color: #fff;
+    background: #d77b63;
+    border-color: #d77b63;
   }
 
   .play-button:active {
@@ -132,15 +146,16 @@
     font-family: inherit;
     font-size: 0.75rem;
     min-width: 36px;
-    font-weight: 500;
+    font-weight: 600;
     font-variant-numeric: tabular-nums;
+    color: #666;
   }
 
   .progress-bar {
     flex: 1;
     height: 24px;
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
+    background: #f5f1e8;
+    border: 2px solid #d4c4a8;
     cursor: pointer;
     position: relative;
     padding: 0;
@@ -148,12 +163,12 @@
   }
 
   .progress-bar:hover {
-    border-color: #000;
+    border-color: #d77b63;
   }
 
   .progress-fill {
     height: 100%;
-    background: #000;
+    background: #d77b63;
     transition: width 0.1s linear;
   }
 

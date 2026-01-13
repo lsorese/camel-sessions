@@ -1,11 +1,14 @@
 ---
 session: 7
-date: 2024-07-28
+date: 2025-03-29
+weather: "☁️ Overcast 🌸 70°F"
+weatherMood: "hushed and tranquil"
+temperature: "62°F - 80°F"
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Cam
     filename: cs-7-cam.mp3
-    genre: Singer-Songwriter
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Lorem Ipsum Dolor
@@ -21,7 +24,7 @@ artists:
         url: https://example.com/dolor
   - name: Finn
     filename: cs-7-finn.mp3
-    genre: Lo-Fi
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Lorem Ipsum Dolor
@@ -36,7 +39,7 @@ artists:
         url: https://example.com/dolor
   - name: Josh
     filename: cs-7-josh.mp3
-    genre: Alt Rock
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Aliqua Ut Enim
@@ -51,7 +54,7 @@ artists:
         url: https://example.com/dolor
   - name: Madly
     filename: cs-7-madly.mp3
-    genre: Indie Folk
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Do Eiusmod Tempor

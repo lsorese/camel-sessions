@@ -17,6 +17,9 @@
           <div class="session-number">Session {session.session}</div>
           <div class="session-date">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
         </div>
+        {#if session.weather}
+          <div class="weather-compact">{session.weather}</div>
+        {/if}
         <div class="artists">
           {#each session.artists as artist, i}
             {artist.name}{i < session.artists.length - 1 ? ', ' : ''}
@@ -36,9 +39,10 @@
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 2px solid #d77b63;
     padding-bottom: 0.75rem;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .sessions-list {
@@ -48,19 +52,20 @@
   }
 
   .session-item {
-    background: #fff;
-    border: 1px solid #e0e0e0;
+    background: #fdfcf9;
+    border: 2px solid #d4c4a8;
     padding: 1rem;
     text-decoration: none;
-    color: #000;
+    color: #1a1a1a;
     display: block;
     transition: all 0.15s ease;
   }
 
   .session-item:hover {
-    border-color: #000;
-    background: #000;
+    border-color: #d77b63;
+    background: #d77b63;
     color: #fff;
+    box-shadow: 0 2px 8px rgba(215, 123, 99, 0.2);
   }
 
   .session-item:active {
@@ -79,17 +84,31 @@
   .session-number {
     font-size: 1.125rem;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .session-date {
     font-size: 0.75rem;
-    opacity: 0.6;
-    font-weight: 500;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .session-item:hover .session-date {
-    opacity: 0.8;
+    color: #fff;
+  }
+
+  .weather-compact {
+    font-size: 0.8125rem;
+    margin: 0.375rem 0;
+    color: #4a7c9e;
+    font-weight: 600;
+  }
+
+  .session-item:hover .weather-compact {
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .artists {

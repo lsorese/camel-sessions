@@ -1,11 +1,14 @@
 ---
 session: 8
-date: 2024-08-04
+date: 2025-09-27
+weather: "🌧️ Moderate rain 🌸 70°F"
+weatherMood: "introspective and gentle"
+temperature: "67°F - 74°F"
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Bri Bevans
     filename: cs-8-bri_bevans.mp3
-    genre: Lo-Fi
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Do Eiusmod Tempor
@@ -19,7 +22,7 @@ artists:
         url: https://example.com/dolor
   - name: Dawning
     filename: cs-8-dawning.mp3
-    genre: Indie Folk
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Aliqua Ut Enim
@@ -34,7 +37,7 @@ artists:
         url: https://example.com/dolor
   - name: Isabel March
     filename: cs-8-isabel_march.mp3
-    genre: Alt Rock
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Adipiscing Elit Sed
@@ -49,7 +52,7 @@ artists:
         url: https://example.com/dolor
   - name: Joshua Aaron Lambert
     filename: cs-8-joshua_aaron_lambert.mp3
-    genre: Bedroom Pop
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Aliqua Ut Enim

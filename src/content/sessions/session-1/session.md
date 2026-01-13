@@ -1,11 +1,14 @@
 ---
 session: 1
-date: 2024-01-17
+date: 2024-01-28
+weather: "🌧️ Moderate rain 🍂 46°F"
+weatherMood: "heavy and brooding"
+temperature: "43°F - 52°F"
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Josh
     filename: cs-1-josh.mp3
-    genre: Experimental
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Incididunt Ut Labore
@@ -20,7 +23,7 @@ artists:
         url: https://example.com/dolor
   - name: Tyler
     filename: cs-1-tyler.mp3
-    genre: Alt Rock
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Lorem Ipsum Dolor
@@ -36,7 +39,7 @@ artists:
         url: https://example.com/dolor
   - name: Zahara
     filename: cs-1-zahara.mp3
-    genre: Indie Folk
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Aliqua Ut Enim

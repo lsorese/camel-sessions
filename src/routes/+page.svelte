@@ -28,6 +28,15 @@
         <div class="session-date">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
       </div>
 
+      {#if session.weather}
+        <div class="weather-info">
+          <span class="weather-display">{session.weather}</span>
+          {#if session.weatherMood}
+            <span class="weather-mood">— {session.weatherMood}</span>
+          {/if}
+        </div>
+      {/if}
+
       {#if session.description}
         <p class="session-description">{session.description}</p>
       {/if}
@@ -71,28 +80,33 @@
   }
 
   .hero {
-    background: #fff;
-    border: 1px solid #000;
+    background: #fdfcf9;
+    border: 2px solid #d77b63;
     padding: 1.25rem 1rem;
     margin-bottom: 1rem;
     text-align: center;
   }
 
   .hero h2 {
-    font-size: 1.5rem;
+    font-size: 1.625rem;
     font-weight: 700;
-    margin-bottom: 0.25rem;
-    letter-spacing: -0.03em;
+    margin-bottom: 0.375rem;
+    letter-spacing: 0.03em;
+    color: #d77b63;
+    text-transform: uppercase;
   }
 
   .tagline {
-    font-size: 0.875rem;
-    opacity: 0.6;
+    font-size: 0.8125rem;
+    color: #4a7c9e;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
   }
 
   .session-block {
-    background: #fff;
-    border: 1px solid #000;
+    background: #fdfcf9;
+    border: 2px solid #5C4A33;
     padding: 1rem;
     margin-bottom: 1rem;
   }
@@ -103,7 +117,7 @@
     align-items: baseline;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #d77b63;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
@@ -111,22 +125,49 @@
   .session-header h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .session-header a {
-    color: #000;
+    color: #1a1a1a;
     text-decoration: none;
   }
 
   .session-header a:hover {
-    opacity: 0.6;
+    color: #d77b63;
   }
 
   .session-date {
     font-size: 0.8125rem;
-    opacity: 0.6;
-    font-weight: 500;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .weather-info {
+    font-size: 0.875rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background: rgba(74, 124, 158, 0.08);
+    border-left: 3px solid #4a7c9e;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .weather-display {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .weather-mood {
+    font-style: italic;
+    color: #4a7c9e;
+    font-size: 0.8125rem;
   }
 
   .session-description {
@@ -134,7 +175,7 @@
     line-height: 1.5;
     margin-bottom: 1rem;
     font-style: italic;
-    opacity: 0.7;
+    color: #555;
   }
 
   .artists-grid {
@@ -144,35 +185,39 @@
   }
 
   .artist-card {
-    border: 1px solid #e0e0e0;
+    border: 2px solid #d4c4a8;
     padding: 1rem;
-    transition: border-color 0.15s ease;
+    background: #fffef9;
+    transition: all 0.15s ease;
   }
 
   .artist-card:hover {
-    border-color: #000;
+    border-color: #d77b63;
+    box-shadow: 0 2px 8px rgba(215, 123, 99, 0.15);
   }
 
   .artist-card h4 {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     font-weight: 700;
-    margin-bottom: 0.25rem;
-    letter-spacing: -0.01em;
+    margin-bottom: 0.375rem;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
 
   .genre {
-    font-size: 0.75rem;
-    opacity: 0.6;
+    font-size: 0.6875rem;
+    color: #4a7c9e;
     margin-bottom: 0.625rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-weight: 600;
   }
 
   .description {
     font-size: 0.875rem;
-    line-height: 1.45;
+    line-height: 1.5;
     margin-bottom: 0.875rem;
+    color: #333;
   }
 
   .tracks {
@@ -180,12 +225,12 @@
   }
 
   .tracks h5 {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.6875rem;
+    font-weight: 700;
     margin-bottom: 0.375rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.7;
+    letter-spacing: 0.08em;
+    color: #666;
   }
 
   .tracks ul {
@@ -196,9 +241,10 @@
   .tracks li {
     font-size: 0.8125rem;
     padding: 0.1875rem 0;
-    border-left: 2px solid #000;
+    border-left: 2px solid #d77b63;
     padding-left: 0.5rem;
     margin-bottom: 0.125rem;
+    color: #333;
   }
 
   .actions {
@@ -208,18 +254,22 @@
   }
 
   .play-btn {
-    background: #fff;
-    border: 1px solid #000;
+    background: #5C4A33;
+    border: 2px solid #5C4A33;
+    color: #f5f1e8;
     padding: 0.625rem 1rem;
     font-family: inherit;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.15s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .play-btn:hover {
-    background: #000;
+    background: #d77b63;
+    border-color: #d77b63;
     color: #fff;
   }
 
@@ -234,17 +284,18 @@
   }
 
   .links a {
-    color: #000;
+    color: #4a7c9e;
     text-decoration: none;
     font-size: 0.8125rem;
-    font-weight: 500;
-    border-bottom: 1px solid #000;
+    font-weight: 600;
+    border-bottom: 1px solid #4a7c9e;
     padding-bottom: 1px;
-    transition: opacity 0.15s ease;
+    transition: all 0.15s ease;
   }
 
   .links a:hover {
-    opacity: 0.6;
+    color: #d77b63;
+    border-bottom-color: #d77b63;
   }
 
   @media (min-width: 641px) {

@@ -1,11 +1,14 @@
 ---
 session: 6
-date: 2024-06-21
+date: 2025-01-25
+weather: "☁️ Overcast 🧊 33°F"
+weatherMood: "crisp and refreshing"
+temperature: "24°F - 44°F"
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Jonathan Paige Brown
     filename: cs-6-jonathan_paige_brown.mp3
-    genre: Bedroom Pop
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Do Eiusmod Tempor
@@ -21,7 +24,7 @@ artists:
         url: https://example.com/dolor
   - name: Sophie Collette
     filename: cs-6-sophie_collette.mp3
-    genre: Singer-Songwriter
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Lorem Ipsum Dolor
@@ -35,7 +38,7 @@ artists:
         url: https://example.com/dolor
   - name: Will Taylor
     filename: cs-6-will_taylor.mp3
-    genre: Lo-Fi
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Et Dolore Magna

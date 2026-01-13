@@ -18,6 +18,14 @@
     <a href="/archive" class="back-link">← Back to Archive</a>
     <h2>Session {session.session}</h2>
     <div class="session-date">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+    {#if session.weather}
+      <div class="weather-info">
+        <span class="weather-display">{session.weather}</span>
+        {#if session.weatherMood}
+          <span class="weather-mood">— {session.weatherMood}</span>
+        {/if}
+      </div>
+    {/if}
     {#if session.description}
       <p class="session-description">{session.description}</p>
     {/if}
@@ -61,36 +69,64 @@
   }
 
   .session-header {
-    background: #fff;
-    border: 1px solid #000;
+    background: #fdfcf9;
+    border: 2px solid #d77b63;
     padding: 1rem;
     margin-bottom: 1rem;
   }
 
   .back-link {
-    color: #000;
+    color: #4a7c9e;
     text-decoration: none;
     font-size: 0.8125rem;
     display: inline-block;
     margin-bottom: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .back-link:hover {
-    opacity: 0.6;
+    color: #d77b63;
   }
 
   .session-header h2 {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.375rem;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .session-date {
     font-size: 0.8125rem;
-    opacity: 0.6;
-    font-weight: 500;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .weather-info {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(74, 124, 158, 0.08);
+    border-left: 3px solid #4a7c9e;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .weather-display {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .weather-mood {
+    font-style: italic;
+    color: #4a7c9e;
+    font-size: 0.8125rem;
   }
 
   .session-description {
@@ -98,7 +134,7 @@
     line-height: 1.5;
     margin-top: 0.75rem;
     font-style: italic;
-    opacity: 0.7;
+    color: #555;
   }
 
   .artists-list {
@@ -108,14 +144,15 @@
   }
 
   .artist-card {
-    background: #fff;
-    border: 1px solid #e0e0e0;
+    background: #fdfcf9;
+    border: 2px solid #d4c4a8;
     padding: 1rem;
-    transition: border-color 0.15s ease;
+    transition: all 0.15s ease;
   }
 
   .artist-card:hover {
-    border-color: #000;
+    border-color: #d77b63;
+    box-shadow: 0 2px 8px rgba(215, 123, 99, 0.15);
   }
 
   .artist-header {
@@ -130,23 +167,27 @@
   .artist-header h3 {
     font-size: 1.125rem;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
 
   .play-btn-small {
-    background: #fff;
-    border: 1px solid #000;
+    background: #5C4A33;
+    border: 2px solid #5C4A33;
+    color: #f5f1e8;
     padding: 0.375rem 0.75rem;
     font-family: inherit;
-    font-size: 0.8125rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.15s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .play-btn-small:hover {
-    background: #000;
-    color: #fff;
+    background: #d77b63;
+    border-color: #d77b63;
   }
 
   .play-btn-small:active {
@@ -154,18 +195,19 @@
   }
 
   .genre {
-    font-size: 0.75rem;
-    opacity: 0.6;
+    font-size: 0.6875rem;
+    color: #4a7c9e;
     margin-bottom: 0.625rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-weight: 600;
   }
 
   .description {
     font-size: 0.875rem;
-    line-height: 1.45;
+    line-height: 1.5;
     margin-bottom: 0.875rem;
+    color: #333;
   }
 
   .tracks {
@@ -173,12 +215,12 @@
   }
 
   .tracks h4 {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.6875rem;
+    font-weight: 700;
     margin-bottom: 0.375rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.7;
+    letter-spacing: 0.08em;
+    color: #666;
   }
 
   .tracks ul {
@@ -189,9 +231,10 @@
   .tracks li {
     font-size: 0.8125rem;
     padding: 0.1875rem 0;
-    border-left: 2px solid #000;
+    border-left: 2px solid #d77b63;
     padding-left: 0.5rem;
     margin-bottom: 0.125rem;
+    color: #333;
   }
 
   .links {
@@ -201,17 +244,18 @@
   }
 
   .links a {
-    color: #000;
+    color: #4a7c9e;
     text-decoration: none;
     font-size: 0.8125rem;
-    font-weight: 500;
-    border-bottom: 1px solid #000;
+    font-weight: 600;
+    border-bottom: 1px solid #4a7c9e;
     padding-bottom: 1px;
-    transition: opacity 0.15s ease;
+    transition: all 0.15s ease;
   }
 
   .links a:hover {
-    opacity: 0.6;
+    color: #d77b63;
+    border-bottom-color: #d77b63;
   }
 
   @media (max-width: 640px) {

@@ -1,11 +1,14 @@
 ---
 session: 3
-date: 2024-03-13
+date: 2024-05-25
+weather: "☁️ Overcast 🌸 74°F"
+weatherMood: "comfortable and easy"
+temperature: "65°F - 85°F"
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Alex Foster
     filename: cs-3-alex_foster.mp3
-    genre: Dream Pop
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Aliqua Ut Enim
@@ -21,7 +24,7 @@ artists:
         url: https://example.com/dolor
   - name: Kelsey Ryan
     filename: cs-3-kelsey_ryan.mp3
-    genre: Singer-Songwriter
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Lorem Ipsum Dolor
@@ -36,7 +39,7 @@ artists:
         url: https://example.com/dolor
   - name: Sourlips
     filename: cs-3-sourlips.mp3
-    genre: Singer-Songwriter
+    genre: Singer-songwriter
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     tracks:
       - Adipiscing Elit Sed

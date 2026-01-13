@@ -18,7 +18,7 @@ function createAudioStore() {
       }
 
       // Create new audio element
-      const audio = new Audio(`/src/content/sessions/session-${sessionNum}/${artist.filename}`);
+      const audio = new Audio(`/sessions/session-${sessionNum}/${artist.filename}`);
 
       audio.addEventListener('loadedmetadata', () => {
         update(s => ({ ...s, duration: audio.duration }));

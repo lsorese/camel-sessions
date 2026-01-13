@@ -27,10 +27,12 @@
   }
 
   :global(body) {
-    font-family: Helvetica, Arial, sans-serif;
-    background: white;
-    color: black;
-    padding-bottom: 180px; /* Space for fixed audio player */
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #fafafa;
+    color: #000;
+    padding-bottom: 140px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .app {
@@ -38,62 +40,80 @@
   }
 
   header {
-    border-bottom: 2px solid black;
-    padding: 1.5rem 0;
+    background: #fff;
+    border-bottom: 1px solid #000;
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   h1 a {
-    color: black;
+    color: #000;
     text-decoration: none;
   }
 
   h1 a:hover {
-    text-decoration: underline;
+    opacity: 0.6;
   }
 
   nav a {
-    color: black;
+    color: #000;
     text-decoration: none;
-    font-size: 1rem;
-    border: 2px solid black;
-    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid #000;
+    padding: 0.375rem 0.75rem;
     display: inline-block;
+    transition: all 0.15s ease;
   }
 
   nav a:hover {
-    background: black;
-    color: white;
+    background: #000;
+    color: #fff;
+  }
+
+  nav a:active {
+    transform: scale(0.98);
   }
 
   main {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 1rem;
   }
 
   @media (max-width: 640px) {
     :global(body) {
-      padding-bottom: 220px;
+      padding-bottom: 160px;
     }
 
-    .container {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
+    header {
+      padding: 0.625rem 0;
+    }
+
+    h1 {
+      font-size: 1rem;
+    }
+
+    nav a {
+      font-size: 0.8125rem;
+      padding: 0.3125rem 0.625rem;
     }
   }
 </style>

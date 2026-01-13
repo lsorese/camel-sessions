@@ -4,7 +4,7 @@ A songwriter showcase website built with SvelteKit, featuring a persistent audio
 
 ## Features
 
-- 8 sessions with 25 audio recordings
+- Multiple sessions with recorded performances
 - Persistent audio player that continues playing when navigating
 - Black and white minimal wireframe design
 - Mobile responsive
@@ -21,12 +21,14 @@ camel-sessions/
 │   │   └── sessionData.js          # Session data parser
 │   ├── routes/
 │   │   ├── +layout.svelte          # Main layout with header & audio player
-│   │   ├── +page.svelte            # Homepage (latest session)
+│   │   ├── +page.svelte            # Homepage (all sessions)
 │   │   ├── archive/                # Archive page (all sessions)
 │   │   └── session/[id]/           # Dynamic session detail pages
-│   └── content/                    # Generated markdown metadata files
-├── static/
-│   └── sessions/                   # Audio files (MP3)
+│   └── content/
+│       └── sessions/
+│           └── session-X/          # Each session folder contains:
+│               ├── session.md      # Metadata (artists, tracks, links, etc.)
+│               └── *.mp3           # Audio files
 └── sessions/                       # Original audio files (source)
 ```
 
@@ -79,15 +81,22 @@ The site is configured for static deployment using `@sveltejs/adapter-static`. B
 - Build Command: `npm run build`
 - Output Directory: `build`
 
-## Regenerating Metadata
+## Adding New Sessions
 
-To regenerate the metadata files from MP3 filenames:
+To add a new session:
+
+1. Create a new folder: `src/content/sessions/session-X/`
+2. Add MP3 files to the folder
+3. Create `session.md` with the session metadata (see existing sessions for format)
+4. Or use the metadata generator script:
 
 ```bash
 node generate-metadata.js
 ```
 
-This will scan the `sessions/` directory and create/update markdown files in `src/content/`.
+This will scan the `sessions/` directory and create/update markdown files in `src/content/sessions/`.
+
+The site automatically detects all sessions in `src/content/sessions/` and displays them.
 
 ## Audio Player Features
 

@@ -16,6 +16,12 @@
     <slot />
   </main>
 
+  <footer>
+    <div class="container">
+      <p>© 2025 Camel Sessions. All music and recordings remain the property of the individual artists.</p>
+    </div>
+  </footer>
+
   <AudioPlayer />
 </div>
 
@@ -99,6 +105,20 @@
     max-width: 100%;
     margin: 0 auto;
     padding: 1rem;
+  }
+
+  footer {
+    background: #fdfcf9;
+    border-top: 2px solid #d77b63;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+  }
+
+  footer p {
+    font-size: 0.8125rem;
+    color: #666;
+    text-align: center;
+    line-height: 1.5;
   }
 
   @media (max-width: 640px) {

@@ -29,6 +29,8 @@ function parseMarkdownFrontmatter(content) {
       data.session = parseInt(trimmed.split(':')[1].trim());
     } else if (trimmed.startsWith('date:')) {
       data.date = trimmed.split(':')[1].trim();
+    } else if (trimmed.startsWith('description:') && !currentArtist) {
+      data.description = trimmed.split('description:')[1].trim();
     } else if (trimmed.startsWith('- name:')) {
       if (currentArtist) {
         data.artists.push(currentArtist);

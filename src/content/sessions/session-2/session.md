@@ -1,6 +1,7 @@
 ---
 session: 2
 date: 2024-02-09
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Brady Heck
     filename: cs-2-brady_heck.mp3

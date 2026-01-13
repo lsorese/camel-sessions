@@ -1,6 +1,7 @@
 ---
 session: 7
 date: 2024-07-28
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Cam
     filename: cs-7-cam.mp3

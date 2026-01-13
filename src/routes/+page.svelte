@@ -28,6 +28,10 @@
         <div class="session-date">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
       </div>
 
+      {#if session.description}
+        <p class="session-description">{session.description}</p>
+      {/if}
+
       <div class="artists-grid">
         {#each session.artists as artist}
           <div class="artist-card">
@@ -118,6 +122,14 @@
   .session-date {
     font-size: 1rem;
     opacity: 0.7;
+  }
+
+  .session-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-style: italic;
+    opacity: 0.8;
   }
 
   .artists-grid {

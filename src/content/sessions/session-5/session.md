@@ -1,6 +1,7 @@
 ---
 session: 5
 date: 2024-05-01
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Heart Meat
     filename: cs-5-heart_meat.mp3

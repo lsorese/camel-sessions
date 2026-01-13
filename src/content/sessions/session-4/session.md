@@ -1,6 +1,7 @@
 ---
 session: 4
 date: 2024-04-02
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Andrew
     filename: cs-4-andrew.mp3

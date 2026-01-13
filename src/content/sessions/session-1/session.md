@@ -1,6 +1,7 @@
 ---
 session: 1
 date: 2024-01-17
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Josh
     filename: cs-1-josh.mp3

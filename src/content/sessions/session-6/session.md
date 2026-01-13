@@ -1,6 +1,7 @@
 ---
 session: 6
 date: 2024-06-21
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Jonathan Paige Brown
     filename: cs-6-jonathan_paige_brown.mp3

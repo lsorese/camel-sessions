@@ -1,6 +1,7 @@
 ---
 session: 8
 date: 2024-08-04
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Bri Bevans
     filename: cs-8-bri_bevans.mp3

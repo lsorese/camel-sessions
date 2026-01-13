@@ -1,6 +1,7 @@
 ---
 session: 3
 date: 2024-03-13
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 artists:
   - name: Alex Foster
     filename: cs-3-alex_foster.mp3

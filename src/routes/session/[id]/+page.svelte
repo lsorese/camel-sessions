@@ -18,6 +18,9 @@
     <a href="/archive" class="back-link">← Back to Archive</a>
     <h2>Session {session.session}</h2>
     <div class="session-date">{new Date(session.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+    {#if session.description}
+      <p class="session-description">{session.description}</p>
+    {/if}
   </div>
 
   <div class="artists-list">
@@ -84,6 +87,14 @@
   .session-date {
     font-size: 1rem;
     opacity: 0.7;
+  }
+
+  .session-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-style: italic;
+    opacity: 0.8;
   }
 
   .artists-list {
